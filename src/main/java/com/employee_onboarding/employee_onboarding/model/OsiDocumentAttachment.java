@@ -10,7 +10,7 @@ public class OsiDocumentAttachment {
 			String docType, String docName, String filePath, Long fileSize, String fileMimeType, String attachmentType,
 			String attachmentUrl, Boolean isVerified, Timestamp verificationDate, String verifiedBy, String status,
 			Boolean isMandatory, Boolean isDeleted, String createdBy, String updatedBy, Timestamp createdAt,
-			Timestamp updatedAt,String name) {
+			Timestamp updatedAt) {
 		this.prospectiveEmployeeId = prospectiveEmployeeId;
 		this.prospectiveEmployeeDetailId = prospectiveEmployeeDetailId;
 		this.docCategory = docCategory;
