@@ -19,7 +19,11 @@ public class DocumentConfigurationController {
     private DocumentConfigurationService service;
 
     @GetMapping
-    
+    @Operation(
+        summary = "Get All Document Configurations",
+        description = "Returns a list of all document configurations available in the system."
+    )
+
     public List<DocumentConfiguration> getAllConfigs() {
         return service.getAll();
     }
