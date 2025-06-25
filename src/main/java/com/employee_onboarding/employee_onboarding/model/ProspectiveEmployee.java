@@ -5,6 +5,9 @@ import lombok.Data;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Map;
+import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import org.hibernate.annotations.JdbcTypeCode;
 import org.hibernate.type.SqlTypes;
@@ -216,4 +219,10 @@ public class ProspectiveEmployee {
     protected void onUpdate() {
         updatedAt = LocalDateTime.now();
     }
+	@OneToMany(mappedBy = "prospectiveEmployee", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<OsiProspectiveEmployeeDetails> details;
+
+@OneToMany(mappedBy = "prospectiveEmployee", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<OsiDocumentAttachment> documentAttachments;
+
 }

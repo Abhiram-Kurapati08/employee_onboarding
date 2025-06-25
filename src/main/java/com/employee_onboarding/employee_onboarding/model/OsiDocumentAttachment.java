@@ -205,8 +205,9 @@ public class OsiDocumentAttachment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+
     private Integer prospectiveEmployeeId;
-    //private Boolean isDeleted;
+   
     private Integer prospectiveEmployeeDetailId;
     private String docCategory;
     private String docType;
@@ -253,4 +254,13 @@ public class OsiDocumentAttachment {
     protected void onUpdate() {
         updatedAt = new Timestamp(System.currentTimeMillis());
     }
+	@ManyToOne
+	@JoinColumn(name = "prospective_employee_id", nullable = false)
+	private ProspectiveEmployee prospectiveEmployee;
+//I have to change from list to Id that will increment automatically when i upload docs in docattachments
+
+	@ManyToOne
+@JoinColumn(name = "prospective_employee_detail_id", nullable = false)
+private OsiProspectiveEmployeeDetails prospectiveEmployeeDetail;
+//employee_type field should be added into this model class
 }

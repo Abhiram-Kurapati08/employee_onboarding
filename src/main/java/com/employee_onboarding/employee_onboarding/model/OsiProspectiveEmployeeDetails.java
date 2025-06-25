@@ -2,12 +2,17 @@ package com.employee_onboarding.employee_onboarding.model;
 
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 @Entity
 @Table(name="osi_prospective_employee_details")
@@ -155,6 +160,12 @@ public class OsiProspectiveEmployeeDetails {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 	    this.updatedAt = updatedAt;
 	}
+	@ManyToOne
+@JoinColumn(name = "prospective_employee_id", nullable = false)
+private ProspectiveEmployee prospectiveEmployee;
+@OneToMany(mappedBy = "prospectiveEmployeeDetail", cascade = CascadeType.ALL, orphanRemoval = true)
+private List<OsiDocumentAttachment> documentAttachments;
+//
 
 
 }
