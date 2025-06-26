@@ -22,8 +22,10 @@ public class OsiProspectiveEmployeeDetails {
 	@Column(name = "id")
 	private Long id;
 
-	@Column(name = "prospective_employee_id", nullable = false)
-	private Long prospectiveEmployeeId;
+	@ManyToOne
+@JoinColumn(name = "prospective_employee_id", nullable = false)
+private ProspectiveEmployee prospectiveEmployee;
+
 
 	@Column(name = "section_type", nullable = false, length = 50)
 	private String sectionType;
@@ -65,13 +67,7 @@ public class OsiProspectiveEmployeeDetails {
 	    this.id = id;
 	}
 
-	public Long getProspectiveEmployeeId() {
-	    return prospectiveEmployeeId;
-	}
-
-	public void setProspectiveEmployeeId(Long prospectiveEmployeeId) {
-	    this.prospectiveEmployeeId = prospectiveEmployeeId;
-	}
+	
 
 	public String getSectionType() {
 	    return sectionType;
@@ -152,6 +148,14 @@ public class OsiProspectiveEmployeeDetails {
 	public void setCreatedAt(LocalDateTime createdAt) {
 	    this.createdAt = createdAt;
 	}
+	public ProspectiveEmployee getProspectiveEmployee() {
+    return prospectiveEmployee;
+}
+
+public void setProspectiveEmployee(ProspectiveEmployee prospectiveEmployee) {
+    this.prospectiveEmployee = prospectiveEmployee;
+}
+
 
 	public LocalDateTime getUpdatedAt() {
 	    return updatedAt;
@@ -160,12 +164,10 @@ public class OsiProspectiveEmployeeDetails {
 	public void setUpdatedAt(LocalDateTime updatedAt) {
 	    this.updatedAt = updatedAt;
 	}
-	@ManyToOne
-@JoinColumn(name = "prospective_employee_id", nullable = false)
-private ProspectiveEmployee prospectiveEmployee;
+	
 @OneToMany(mappedBy = "prospectiveEmployeeDetail", cascade = CascadeType.ALL, orphanRemoval = true)
 private List<OsiDocumentAttachment> documentAttachments;
-//
+
 
 
 }

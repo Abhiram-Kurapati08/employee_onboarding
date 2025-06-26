@@ -44,11 +44,11 @@ public class ProspectiveEmployee {
 		this.updatedAt = updatedAt;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -182,7 +182,7 @@ public class ProspectiveEmployee {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
     private String firstName;
     private String middleName;

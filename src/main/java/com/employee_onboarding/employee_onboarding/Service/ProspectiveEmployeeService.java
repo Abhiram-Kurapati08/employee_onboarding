@@ -22,11 +22,11 @@ public class ProspectiveEmployeeService {
         return repository.findAll();
     }
 
-    public Optional<ProspectiveEmployee> getEmployeeById(Integer id) {
+    public Optional<ProspectiveEmployee> getEmployeeById(Long id) {
         return repository.findById(id);
     }
 
-    public void deleteEmployee(Integer id) {
+    public void deleteEmployee(Long id) {
         repository.deleteById(id);
     }
 

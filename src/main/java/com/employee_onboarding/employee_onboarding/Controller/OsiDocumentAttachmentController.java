@@ -55,6 +55,14 @@ public class OsiDocumentAttachmentController {
     public ResponseEntity<List<OsiDocumentAttachment>> getByEmployeeId(@PathVariable Integer empId) {
         return ResponseEntity.ok(service.getByEmployeeId(empId));
     }
+    @GetMapping("/employee/{employeeId}/section/{sectionType}")
+    public ResponseEntity<List<OsiDocumentAttachment>> getAttachmentsBySectionType(
+            @PathVariable Long employeeId,
+            @PathVariable String sectionType) {
+
+        List<OsiDocumentAttachment> attachments = service.getAttachmentsByEmployeeAndSection(employeeId, sectionType);
+        return ResponseEntity.ok(attachments);
+    }
 
     @DeleteMapping("/{id}")
     @Operation(

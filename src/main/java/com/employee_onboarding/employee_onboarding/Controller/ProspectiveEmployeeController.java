@@ -44,7 +44,7 @@ public class ProspectiveEmployeeController {
         summary = "Get Prospective Employee by ID",
         description = "Fetches the details of a prospective employee using their unique ID."
     )
-    public ResponseEntity<ProspectiveEmployee> getById(@PathVariable Integer id) {
+    public ResponseEntity<ProspectiveEmployee> getById(@PathVariable Long id) {
         return service.getEmployeeById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -55,7 +55,7 @@ public class ProspectiveEmployeeController {
         summary = "Delete Prospective Employee by ID",
         description = "Deletes a prospective employee record from the system using their ID."
     )
-    public ResponseEntity<Void> delete(@PathVariable Integer id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         service.deleteEmployee(id);
         return ResponseEntity.noContent().build();
     }
@@ -65,7 +65,7 @@ public class ProspectiveEmployeeController {
         summary = "Update Prospective Employee",
         description = "Updates the details of a prospective employee using their ID. If the employee is not found, returns 404."
     )
-    public ResponseEntity<ProspectiveEmployee> update(@PathVariable Integer id,
+    public ResponseEntity<ProspectiveEmployee> update(@PathVariable Long id,
                                                       @RequestBody ProspectiveEmployee employee) {
         return service.getEmployeeById(id)
                 .map(existing -> {

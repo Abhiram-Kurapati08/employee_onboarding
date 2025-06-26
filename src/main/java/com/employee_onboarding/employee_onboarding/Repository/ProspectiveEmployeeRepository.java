@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.employee_onboarding.employee_onboarding.model.ProspectiveEmployee;
 
 @Repository
-public interface ProspectiveEmployeeRepository extends JpaRepository<ProspectiveEmployee, Integer> {
+public interface ProspectiveEmployeeRepository extends JpaRepository<ProspectiveEmployee, Long> {
     boolean existsByEmail(String email);
 }

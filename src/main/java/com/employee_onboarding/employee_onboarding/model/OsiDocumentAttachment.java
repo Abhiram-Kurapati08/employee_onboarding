@@ -6,13 +6,12 @@ import java.sql.Timestamp;
 @Table(name = "osi_document_attachments")
 public class OsiDocumentAttachment {
 	public OsiDocumentAttachment() {};
-    public OsiDocumentAttachment(Integer prospectiveEmployeeId, Integer prospectiveEmployeeDetailId, String docCategory,
+    public OsiDocumentAttachment(Long prospectiveEmployeeId, Long prospectiveEmployeeDetailId, String docCategory,
 			String docType, String docName, String filePath, Long fileSize, String fileMimeType, String attachmentType,
 			String attachmentUrl, Boolean isVerified, Timestamp verificationDate, String verifiedBy, String status,
 			Boolean isMandatory, Boolean isDeleted, String createdBy, String updatedBy, Timestamp createdAt,
 			Timestamp updatedAt) {
-		this.prospectiveEmployeeId = prospectiveEmployeeId;
-		this.prospectiveEmployeeDetailId = prospectiveEmployeeDetailId;
+	
 		this.docCategory = docCategory;
 		this.docType = docType;
 		this.docName = docName;
@@ -33,29 +32,29 @@ public class OsiDocumentAttachment {
 		this.updatedAt = updatedAt;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
-	public Integer getProspectiveEmployeeId() {
-		return prospectiveEmployeeId;
-	}
+	public ProspectiveEmployee getProspectiveEmployee() {
+    return prospectiveEmployee;
+}
 
-	public void setProspectiveEmployeeId(Integer prospectiveEmployeeId) {
-		this.prospectiveEmployeeId = prospectiveEmployeeId;
-	}
+public void setProspectiveEmployee(ProspectiveEmployee prospectiveEmployee) {
+    this.prospectiveEmployee = prospectiveEmployee;
+}
 
-	public Integer getProspectiveEmployeeDetailId() {
-		return prospectiveEmployeeDetailId;
-	}
+public OsiProspectiveEmployeeDetails getProspectiveEmployeeDetail() {
+    return prospectiveEmployeeDetail;
+}
 
-	public void setProspectiveEmployeeDetailId(Integer prospectiveEmployeeDetailId) {
-		this.prospectiveEmployeeDetailId = prospectiveEmployeeDetailId;
-	}
+public void setProspectiveEmployeeDetail(OsiProspectiveEmployeeDetails prospectiveEmployeeDetail) {
+    this.prospectiveEmployeeDetail = prospectiveEmployeeDetail;
+}
 
 	public String getDocCategory() {
 		return docCategory;
@@ -203,12 +202,10 @@ public class OsiDocumentAttachment {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
 
-    private Integer prospectiveEmployeeId;
    
-    private Integer prospectiveEmployeeDetailId;
     private String docCategory;
     private String docType;
     private String docName;
@@ -255,12 +252,11 @@ public class OsiDocumentAttachment {
         updatedAt = new Timestamp(System.currentTimeMillis());
     }
 	@ManyToOne
-	@JoinColumn(name = "prospective_employee_id", nullable = false)
-	private ProspectiveEmployee prospectiveEmployee;
-//I have to change from list to Id that will increment automatically when i upload docs in docattachments
+@JoinColumn(name = "prospective_employee_id", nullable = false)
+private ProspectiveEmployee prospectiveEmployee;
 
 	@ManyToOne
-@JoinColumn(name = "prospective_employee_detail_id", nullable = false)
+@JoinColumn(name = "prospective_employee_detail_id")
 private OsiProspectiveEmployeeDetails prospectiveEmployeeDetail;
-//employee_type field should be added into this model class
+
 }

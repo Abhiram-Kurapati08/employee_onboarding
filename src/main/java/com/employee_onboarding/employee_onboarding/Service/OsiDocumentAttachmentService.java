@@ -33,4 +33,7 @@ public class OsiDocumentAttachmentService {
     public void deleteById(Integer id) {
         repository.deleteById(id);
     }
+     public List<OsiDocumentAttachment> getAttachmentsByEmployeeAndSection(Long employeeId, String sectionType) {
+        return repository.findByEmployeeIdAndSectionType(employeeId, sectionType);
+    }
 }

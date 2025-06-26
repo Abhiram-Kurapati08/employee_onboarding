@@ -5,6 +5,7 @@ import org.springframework.stereotype.Repository;
 import com.employee_onboarding.employee_onboarding.model.OsiProspectiveEmployeeDetails;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface OsiProspectiveEmployeeDetailsRepo extends JpaRepository<OsiProspectiveEmployeeDetails, Long> {
@@ -19,6 +20,10 @@ public interface OsiProspectiveEmployeeDetailsRepo extends JpaRepository<OsiPros
 
     // Custom query if needed: find all approved sections
     List<OsiProspectiveEmployeeDetails> findByStatusAndReviewedAtNotNull(String status);
+   
+
 
 	List<OsiProspectiveEmployeeDetails> findByReviewedAtIsNotNull();
+        Optional<OsiProspectiveEmployeeDetails> findByProspectiveEmployeeIdAndSectionType(Long prospectiveEmployeeId, String sectionType);
+
 }
